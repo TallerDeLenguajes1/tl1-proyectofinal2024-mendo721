@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tl1-proyectofinal2024-mendo721")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed5531caf41273b5ed315c1920b5f0589e7f8103")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc67c70e1702611f2b6aa848d250c8bf44957c59")]
 [assembly: System.Reflection.AssemblyProductAttribute("tl1-proyectofinal2024-mendo721")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tl1-proyectofinal2024-mendo721")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
