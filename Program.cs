@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using Personajes;
 using PersonajesJson;
 using Historial;
+using Combate;
 
 namespace JuegoRPG
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             string archivoPersonajes = "personajes.json";
+
             List<Personaje> personajes;
+            Jugador jugador = FabricaDePersonajes.SeleccionarPersonaje();
 
             if (PersonajesJson.PersonajesJson.Existe(archivoPersonajes))
             {
@@ -20,18 +23,26 @@ namespace JuegoRPG
             else
             {
                 personajes = new List<Personaje>();
-                for (int i = 0; i < 10; i++)
+                
+                
+
+                for (int i = 0; i < 9; i++)
                 {
                     personajes.Add(FabricaDePersonajes.CrearEnemigoAleatorio());
                 }
+
                 PersonajesJson.PersonajesJson.GuardarPersonajes(personajes, archivoPersonajes);
             }
-
-            Console.WriteLine("Personajes cargados:");
+            personajes.Add(jugador);
+            Console.WriteLine("Personajes disponibles:");
             foreach (var personaje in personajes)
             {
-                Console.WriteLine($"Tipo: {personaje.Tipo}, Nombre: {personaje.Nombre}, Apodo: {personaje.Apodo}, Fecha de Nacimiento: {personaje.FechaDeNacimiento.ToShortDateString()}, Edad: {personaje.Edad}, Velocidad: {personaje.Velocidad}, Destreza: {personaje.Destreza}, Fuerza: {personaje.Fuerza}, Nivel: {personaje.Nivel}, Armadura: {personaje.Armadura}, Salud: {personaje.Salud}");
+                Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
             }
+
+            
+
+            Combate.Combate.IniciarCombate(jugador, personajes);
         }
     }
 }

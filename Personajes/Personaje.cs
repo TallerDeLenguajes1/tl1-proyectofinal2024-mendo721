@@ -147,5 +147,30 @@ namespace Personajes
             if (fechaDeNacimiento.Date > hoy.AddYears(-edad)) edad--;
             return edad;
         }
+
+        public static Jugador SeleccionarPersonaje()
+        {
+            Console.WriteLine("Selecciona tu personaje:");
+            for (int i = 0; i < personajesPredefinidos.Count; i++)
+            {
+                var personaje = personajesPredefinidos[i];
+                Console.WriteLine($"{i + 1}. {personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo}");
+            }
+
+            int seleccion;
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out seleccion) && seleccion >= 1 && seleccion <= personajesPredefinidos.Count)
+                {
+                    break;
+                }
+                Console.WriteLine("Seleccion no válida, intenta de nuevo.");
+            }
+
+            Personaje seleccionado = personajesPredefinidos[seleccion - 1];
+            personajesPredefinidos.Remove(seleccionado);
+
+            return new Jugador(seleccionado.Tipo, seleccionado.Nombre, seleccionado.Apodo, seleccionado.FechaDeNacimiento,seleccionado.Edad, seleccionado.Velocidad, seleccionado.Destreza, seleccionado.Fuerza, seleccionado.Nivel, seleccionado.Armadura);
+        }
     }
 }
