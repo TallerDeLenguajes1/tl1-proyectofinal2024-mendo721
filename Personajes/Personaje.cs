@@ -72,9 +72,9 @@ namespace Personajes
         private static Random random = new Random();
         private static List<Personaje> personajesPredefinidos = new List<Personaje>
         {
-            new Jugador("Guerrero", "Arthur", "El Bravo", new DateTime(2000, 1, 1), 24, 7, 4, 9, 5, 8),
-            new Jugador("Mago", "Merlin", "El Astuto", new DateTime(1950, 5, 10), 74, 5, 5, 3, 7, 6),
-            new Jugador("Arquero", "Legolas", "El Preciso", new DateTime(1985, 11, 20), 38, 9, 3, 7, 4, 7)
+            new Jugador("Teniente", "Aldo Raine", "El Apache", new DateTime(2000, 1, 1), 24, 7, 4, 9, 5, 8),
+            new Jugador("Sargento ", "Donnie Donowitz", "Oso Judío", new DateTime(1950, 5, 10), 74, 5, 5, 3, 7, 6),
+            new Jugador("Sargento", "Hugo Stiglitz", "El Psicopata", new DateTime(1985, 11, 20), 38, 9, 3, 7, 4, 7)
         };
 
         public static List<Personaje> ObtenerPersonajes()
@@ -84,18 +84,16 @@ namespace Personajes
 
         private static List<EnemigoPredefinido> enemigosPredefinidos = new List<EnemigoPredefinido>
         {
-            new EnemigoPredefinido("Granadero", "Ramon", "El Malo"),
-            new EnemigoPredefinido("Artillero", "Julio", "El Rudo"),
-            new EnemigoPredefinido("Comandante", "Carlos", "El Debil"),
-            new EnemigoPredefinido("Razo", "Miguel", "El Debil"),
-            new EnemigoPredefinido("Razo", "David", "El Debil"),
-            new EnemigoPredefinido("Razo", "Angel", "El Debil"),
-            new EnemigoPredefinido("Razo", "Ramiro", "El Debil"),
-            new EnemigoPredefinido("Razo", "Tobias", "El Debil"),
-            new EnemigoPredefinido("Razo", "Antonio", "El Debil"),
-            new EnemigoPredefinido("Razo", "Michael", "El Debil"),
-            new EnemigoPredefinido("Razo", "arito", "El Debil"),
-            new EnemigoPredefinido("Razo", "Lauty", "El Debil"),
+            new EnemigoPredefinido("Coronel", "Hans Landa", "El Cazajudíos"),
+            new EnemigoPredefinido("Cabo", "Fredrick Zoller", "El Héroe de la Nación"),
+            new EnemigoPredefinido("Ministro", "Joseph Goebbels", "El Enano Venenoso"),
+            new EnemigoPredefinido("Mayor", "Dieter Hellstrom", "La Bestia"),
+            new EnemigoPredefinido("Führer", "Adolf Hitler", "El Líder"),
+            new EnemigoPredefinido("Cabo ", "Hans Müller", "El Rápido"),
+            new EnemigoPredefinido("Cabo", "Karl Schmidt", "El Silencioso"),
+            new EnemigoPredefinido("Cabo", "Otto Bauer", "El Intrépido"),
+            new EnemigoPredefinido("Cabo", "Wilhelm Richter", "El Guardián"),
+            new EnemigoPredefinido("Cabo", "Ernst Weber", "El Implacable"),
         };
 
         //Se utiliza para no repetir los nombres de los personajes HashSet se utiliza para que no se repita elementos en la lista
