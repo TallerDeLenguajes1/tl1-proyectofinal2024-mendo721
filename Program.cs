@@ -4,6 +4,7 @@ using Personajes;
 using PersonajesJson;
 using Historial;
 using Combate;
+using Texto;
 
 namespace JuegoRPG
 {
@@ -11,6 +12,7 @@ namespace JuegoRPG
     {
         static void Main(string[] args)
         {
+            Texto.Texto.Presentacion();
             string archivoPersonajes = "personajes.json";
 
             List<Personaje> personajes;

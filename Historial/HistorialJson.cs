@@ -51,7 +51,6 @@ namespace Historial
                 Console.WriteLine("\nEl archivo no existe");
                 return new List<Ganador>();
             }
-
             string json = File.ReadAllText(nombreArchivo);
             return JsonSerializer.Deserialize<List<Ganador>>(json);
         }
