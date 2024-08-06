@@ -22,18 +22,18 @@ namespace PersonajesJson
         //Metodo para leer los personajes en Json en el archivo
         public static List<Personaje> LeerPersonajes(string NombreArchivo)
         {
-            if (!File.Exists(NombreArchivo))
+            if (!File.Exists(NombreArchivo)) // preguntar si json tiene algo
             {
                 Console.WriteLine("\nEl archivo no existe");
                 return new List<Personaje>();
             }
-            string Json = File.ReadAllText(NombreArchivo);
+            string? Json = File.ReadAllText(NombreArchivo);
             return JsonSerializer.Deserialize<List<Personaje>>(Json);
         }
 
         public static bool Existe(string NombreArchivo)
         {
-            if (File.Exists(NombreArchivo))
+            if (File.Exists(NombreArchivo)) // preguntar si json tiene algo
             {
                 string Json = File.ReadAllText(NombreArchivo);
                 return !string.IsNullOrEmpty(Json);

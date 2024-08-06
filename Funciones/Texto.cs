@@ -29,7 +29,7 @@ namespace Texto
  ░            ░  ░      ░                 ░  ░   ░        ░        ░ ░        ░           ░   ░           ░          ░     ░  ░    ░ ░     ░      ░        ░  ░
       ░                                                 ░                                                                                                      
 ");
-            Thread.Sleep(1000); // Ajusta el tiempo de espera según sea necesario
+            Thread.Sleep(1000);
             string presentacion = @"
             ╔════════════════════════════════════════════════════════════════╗
             ║                                                                ║
@@ -53,9 +53,25 @@ namespace Texto
             ╠════════════════════════════════════════════════════════════════╣
             ║                Presiona enter para continuar...                ║
             ╚════════════════════════════════════════════════════════════════╝";
-            Escribir(10, presentacion); // Ajusta la velocidad según sea necesario
+            Escribir(1, presentacion);
             Console.ReadKey();
             Console.Clear();
+        }
+
+        public static void Menu()
+        {
+            Console.Clear();
+            string menu = @"
+            ╔════════════════════════════════════════════════════════════════╗
+            ║                                                                ║
+            ║                      Bastardos Sin Gloria                      ║
+            ║                                                                ║
+            ╠════════════════════════════════════════════════════════════════╣
+            ║                      1. Jugar                                  ║
+            ║                      2. Historial de ganadores                 ║
+            ║                      3. Salir                                  ║
+            ╚════════════════════════════════════════════════════════════════╝";
+            Escribir(1, menu);
         }
     }
 }

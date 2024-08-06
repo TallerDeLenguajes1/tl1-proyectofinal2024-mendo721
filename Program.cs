@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Personajes;
+using Jugador;
+using Enemigo;
+using FabricaDePersonajes;
 using PersonajesJson;
 using Historial;
 using Combate;
@@ -13,10 +16,11 @@ namespace JuegoRPG
         static void Main(string[] args)
         {
             Texto.Texto.Presentacion();
+            Texto.Texto.Menu();
             string archivoPersonajes = "personajes.json";
 
             List<Personaje> personajes;
-            Jugador jugador = FabricaDePersonajes.SeleccionarPersonaje();
+            Jugador.Jugador jugador = FabricaDePersonajes.FabricaDePersonajes.SeleccionarPersonaje();
 
             if (PersonajesJson.PersonajesJson.Existe(archivoPersonajes))
             {
@@ -30,17 +34,19 @@ namespace JuegoRPG
 
                 for (int i = 0; i < 10; i++)
                 {
-                    personajes.Add(FabricaDePersonajes.CrearEnemigoAleatorio());
+                    personajes.Add(FabricaDePersonajes.FabricaDePersonajes.CrearEnemigoAleatorio());
                 }
 
                 PersonajesJson.PersonajesJson.GuardarPersonajes(personajes, archivoPersonajes);
             }
-            personajes.Add(jugador);
+            
+            Console.WriteLine("-----------------------------------------------------------------------------");
             Console.WriteLine("Personajes disponibles:");
             foreach (var personaje in personajes)
             {
                 Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
             }
+            Console.WriteLine("-----------------------------------------------------------------------------");
 
             
 

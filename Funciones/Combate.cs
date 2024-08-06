@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Jugador;
+using Enemigo;
+using FabricaDePersonajes;
 using Personajes;
 
 namespace Combate
 {
     public class Combate
     {
-        public static void IniciarCombate(Jugador jugador, List<Personaje> personajes)
+        public static void IniciarCombate(Jugador.Jugador jugador, List<Personaje> personajes)
         {
             if (personajes.Count < 2)
             {
@@ -21,21 +24,23 @@ namespace Combate
                 int indice = random.Next(personajes.Count);
                 Personaje enemigo = personajes[indice];
 
-                if (enemigo is Jugador)
-                {
-                    continue; // Saltar si se selecciona al jugador como enemigo
-                }
-
+                Console.WriteLine($"\n---Salud de Jugador: {jugador.Salud}---");
+                Console.WriteLine("-----------------------------------------------------------------------------");
                 Console.WriteLine($"\nCombate entre {jugador.Nombre} y {enemigo.Nombre}");
 
                 Personaje ganador = EjecutarCombate(jugador, enemigo);
+                Console.WriteLine("-----------------------------------------------------------------------------");
 
                 personajes.Remove(jugador == ganador ? enemigo : jugador);
 
                 if (ganador != jugador)
                 {
-                    Console.WriteLine($"El jugador {jugador.Nombre} ha sido derrotado. Fin del juego.");
+                    Console.WriteLine($"\n---El jugador {jugador.Nombre} ha sido derrotado. Fin del juego.---");
                     return;
+                }
+                else
+                {
+                    jugador.MejorarEstadisticas();
                 }
             }
 
@@ -49,9 +54,9 @@ namespace Combate
 
             while (combateEnCurso)
             {
-                Console.WriteLine($"\nTurno del {jugador.Nombre}");
+                Console.WriteLine($"\nTurno de {jugador.Nombre}");
                 enemigo.Salud -= CalcularDanio(jugador, enemigo);
-                Console.WriteLine($"{jugador.Nombre} ataca a {enemigo.Nombre}, salud de {enemigo.Nombre}: {enemigo.Salud}");
+                Console.WriteLine($"\n{jugador.Nombre} ataca a {enemigo.Nombre}, salud de {enemigo.Nombre}: {enemigo.Salud}");
 
                 if (enemigo.Salud <= 0)
                 {
@@ -61,9 +66,9 @@ namespace Combate
                     continue;
                 }
 
-                Console.WriteLine($"\nTurno del {enemigo.Nombre}");
+                Console.WriteLine($"\nTurno de {enemigo.Nombre}");
                 jugador.Salud -= CalcularDanio(enemigo, jugador);
-                Console.WriteLine($"{enemigo.Nombre} ataca a {jugador.Nombre}, salud de {jugador.Nombre}: {jugador.Salud}");
+                Console.WriteLine($"\n{enemigo.Nombre} ataca a {jugador.Nombre}, salud de {jugador.Nombre}: {jugador.Salud}");
 
                 if (jugador.Salud <= 0)
                 {
@@ -87,6 +92,6 @@ namespace Combate
             int danioFinal = Math.Max(danio * 2, 10); // Asegurarse de que el daño no sea menor que 10
 
             return danioFinal;
-        }
+        }        
     }
 }

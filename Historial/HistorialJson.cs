@@ -46,16 +46,16 @@ namespace Historial
 
         public static List<Ganador> LeerGanadores(string nombreArchivo)
         {
-            if (!File.Exists(nombreArchivo))
+            if (!File.Exists(nombreArchivo))// preguntar si json tiene algo
             {
                 Console.WriteLine("\nEl archivo no existe");
                 return new List<Ganador>();
             }
-            string json = File.ReadAllText(nombreArchivo);
+            string? json = File.ReadAllText(nombreArchivo);
             return JsonSerializer.Deserialize<List<Ganador>>(json);
         }
 
-        public static bool Existe(string nombreArchivo)
+        public static bool Existe(string nombreArchivo) // preguntar si json tiene algo
         {
             return File.Exists(nombreArchivo) && new FileInfo(nombreArchivo).Length > 0;
         }
