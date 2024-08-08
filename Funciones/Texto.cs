@@ -1,9 +1,10 @@
 using System;
 using System.Threading;
+using Personajes;
 
 namespace Texto
 {
-    public class Texto
+    public static class Texto
     {
         public static void Escribir(int vel, string texto)
         {
@@ -23,8 +24,7 @@ namespace Texto
 ▒██░█▀  ░██▄▄▄▄██   ▒   ██▒░ ▓██▓ ░ ░██▄▄▄▄██ ▒██▀▀█▄  ░▓█▄   ▌▒██   ██░  ▒   ██▒     ▒   ██▒░██░▓██▒  ▐▌██▒   ░▓█  ██▓▒██░    ▒██   ██░▒██▀▀█▄  ░██░░██▄▄▄▄██ 
 ░▓█  ▀█▓ ▓█   ▓██▒▒██████▒▒  ▒██▒ ░  ▓█   ▓██▒░██▓ ▒██▒░▒████▓ ░ ████▓▒░▒██████▒▒   ▒██████▒▒░██░▒██░   ▓██░   ░▒▓███▀▒░██████▒░ ████▓▒░░██▓ ▒██▒░██░ ▓█   ▓██▒
 ░▒▓███▀▒ ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░  ▒ ░░    ▒▒   ▓▒█░░ ▒▓ ░▒▓░ ▒▒▓  ▒ ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░   ▒ ▒▓▒ ▒ ░░▓  ░ ▒░   ▒ ▒     ░▒   ▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░▓   ▒▒   ▓▒█░
-▒░▒   ░   ▒  
- ▒▒ ░░ ░▒  ░ ░    ░      ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░   ░ ░▒  ░ ░ ▒ ░░ ░░   ░ ▒░     ░   ░ ░ ░ ▒  ░  ░ ▒ ▒░   ░▒ ░ ▒░ ▒ ░  ▒   ▒▒ ░
+▒░▒   ░   ▒   ▒▒ ░░ ░▒  ░ ░    ░      ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ▒  ▒   ░ ▒ ▒░ ░ ░▒  ░ ░   ░ ░▒  ░ ░ ▒ ░░ ░░   ░ ▒░     ░   ░ ░ ░ ▒  ░  ░ ▒ ▒░   ░▒ ░ ▒░ ▒ ░  ▒   ▒▒ ░
  ░    ░   ░   ▒   ░  ░  ░    ░        ░   ▒     ░░   ░  ░ ░  ░ ░ ░ ░ ▒  ░  ░  ░     ░  ░  ░   ▒ ░   ░   ░ ░    ░ ░   ░   ░ ░   ░ ░ ░ ▒    ░░   ░  ▒ ░  ░   ▒   
  ░            ░  ░      ░                 ░  ░   ░        ░        ░ ░        ░           ░   ░           ░          ░     ░  ░    ░ ░     ░      ░        ░  ░
       ░                                                 ░                                                                                                      
@@ -73,5 +73,27 @@ namespace Texto
             ╚════════════════════════════════════════════════════════════════╝";
             Escribir(1, menu);
         }
+
+        public static void MostrarMensajeDerrota()
+        {
+            string rendirse = $@"
+            ╔════════════════════════════════════════════════════════════════╗
+            ║                                                                ║
+            ║                       Mensaje del Teniente Aldo Raine          ║
+            ║                                                                ║
+            ╠════════════════════════════════════════════════════════════════╣
+            ║ “¡Maldita sea! Nos has deshonrado a todos. Aquí no hay lugar   ║
+            ║  para los débiles ni para los cobardes. Esperaba más de ti,    ║
+            ║  pero parece que me equivoqué. Recuérdalo bien: rendirse no    ║
+            ║  es una opción. Si quieres ser uno de los Bastardos, levántate,║
+            ║  límpiate la sangre y vuelve a pelear. ¡No aceptamos perdedores║
+            ║  en nuestras filas!”                                           ║
+            ║                                                                ║
+            ║                       - Teniente Aldo Raine                    ║
+            ╚════════════════════════════════════════════════════════════════╝
+";
+            Escribir(1, rendirse);
+        }
+
     }
 }

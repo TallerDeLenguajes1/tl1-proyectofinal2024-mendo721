@@ -27,7 +27,7 @@ namespace PersonajesJson
                 Console.WriteLine("\nEl archivo no existe");
                 return new List<Personaje>();
             }
-            string? Json = File.ReadAllText(NombreArchivo);
+            string Json = File.ReadAllText(NombreArchivo);
             return JsonSerializer.Deserialize<List<Personaje>>(Json);
         }
 
@@ -36,7 +36,7 @@ namespace PersonajesJson
             if (File.Exists(NombreArchivo)) // preguntar si json tiene algo
             {
                 string Json = File.ReadAllText(NombreArchivo);
-                return !string.IsNullOrEmpty(Json);
+                return !string.IsNullOrEmpty(Json); //devuelve falso en caso que el parametro sea un string nulo
             }
             return false;
         }

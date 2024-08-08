@@ -55,6 +55,5 @@ namespace Jugador
             }
             Console.WriteLine("¡Estadisticas mejoradas!");
         }
-        
     }
 }

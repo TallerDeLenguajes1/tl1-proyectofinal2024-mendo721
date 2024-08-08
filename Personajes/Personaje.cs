@@ -34,17 +34,26 @@ namespace Personajes
             Nivel = nivel;
             Armadura = armadura;
         }
-    }
 
-    
-
-    public class Enemigo : Personaje
-    {
-        public Enemigo(string tipo, string nombre, string apodo, DateTime fechaDeNacimiento, int edad, int velocidad, int destreza, int fuerza, int nivel, int armadura)
-            : base(tipo, nombre, apodo, fechaDeNacimiento, edad, velocidad, destreza, fuerza, nivel, armadura)
+         public void MostrarInformacion()
         {
+            string estadisticas = $@"
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║                      Estadísticas del Personaje                ║
+║                                                                ║
+╠════════════════════════════════════════════════════════════════╣
+║ Nombre     : {Nombre,-50}║
+║ Apodo      : {Apodo,-50}║
+║ Salud      : {Salud,-50}║
+║ Destreza   : {Destreza,-50}║
+║ Fuerza     : {Fuerza,-50}║
+║ Nivel      : {Nivel,-50}║
+║ Armadura   : {Armadura,-50}║
+║ Velocidad  : {Velocidad,-50}║
+╚════════════════════════════════════════════════════════════════╝
+";
+            Console.WriteLine(estadisticas);
         }
     }
-
-
 }
