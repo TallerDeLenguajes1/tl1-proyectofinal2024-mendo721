@@ -24,7 +24,7 @@ namespace Jugador
                 Console.WriteLine("3. Fuerza");
                 Console.WriteLine("4. Nivel");
                 Console.WriteLine("5. Armadura");
-                Console.WriteLine("Eleccion: ");
+                Console.WriteLine("\nEleccion: ");
 
                 if (int.TryParse(Console.ReadLine(), out int eleccion) && eleccion >= 1 && eleccion <= 5)
                 {

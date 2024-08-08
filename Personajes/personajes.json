@@ -1,0 +1,16 @@
+[
+  {
+    "Tipo": "Cabo ",
+    "Nombre": "Hans M\u00FCller",
+    "Apodo": "El R\u00E1pido",
+    "FechaDeNacimiento": "1790-01-25T00:00:00",
+    "Edad": 234,
+    "Velocidad": 7,
+    "Destreza": 4,
+    "Fuerza": 8,
+    "Nivel": 9,
+    "Armadura": 1,
+    "Salud": 100
+  }
+  
+]

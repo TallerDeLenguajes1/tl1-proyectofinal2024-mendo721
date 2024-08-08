@@ -4,6 +4,7 @@ using Jugador;
 using Enemigo;
 using FabricaDePersonajes;
 using System.Threading;
+using Historial;
 using Personajes;
 
 namespace Combate
@@ -12,7 +13,7 @@ namespace Combate
     {
         public static void IniciarCombate(Jugador.Jugador jugador, List<Personaje> personajes)
         {
-            if (personajes.Count < 2)
+            if (personajes.Count < 1)
             {
                 Console.WriteLine("\nNo hay suficientes personajes para empezar un combate");
                 return;
@@ -20,7 +21,7 @@ namespace Combate
 
             Random random = new Random();
 
-            while (personajes.Count > 1)
+            while (personajes.Count >= 1)
             {
                 int indice = random.Next(personajes.Count);
                 Personaje enemigo = personajes[indice];
@@ -46,7 +47,9 @@ namespace Combate
                 Console.Clear();
             }
 
-            Console.WriteLine($"El ganador final es: {jugador.Nombre}");
+            Texto.Texto.Ganaste();
+            string archivoGanadores = "Historial/ganadores.json";
+            Historial.Ganador.GuardarGanador(jugador, archivoGanadores);
         }
 
         private static Personaje EjecutarCombate(Personaje jugador, Personaje enemigo)
@@ -62,9 +65,10 @@ namespace Combate
                 string? accion;
                 int defender = 0;
                 int rendirse = 0;
-                Console.WriteLine("\n1- Atacar");
-                Console.WriteLine("\n2- Defender");
-                Console.WriteLine("\n3- Rendirse");
+                Console.WriteLine("1- Atacar");
+                Console.WriteLine("2- Defender");
+                Console.WriteLine("3- Rendirse");
+                Console.WriteLine("\nAccion: ");
                 accion = Console.ReadLine();
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -72,11 +76,11 @@ namespace Combate
                 {
                     case "1":
                     enemigo.Salud -= CalcularDanio(jugador, enemigo,defender);
-                    Console.WriteLine($"\n{jugador.Nombre} ataca a {enemigo.Nombre}, salud de {enemigo.Nombre}: {enemigo.Salud}");
+                    Console.WriteLine($"{jugador.Nombre} ataca a {enemigo.Nombre}, salud de {enemigo.Nombre}: {enemigo.Salud}");
                     break;
                     case "2":
                     defender = 10;
-                    Console.WriteLine($"\n{jugador.Nombre} se defiende al ataque de {enemigo.Nombre}");
+                    Console.WriteLine($"{jugador.Nombre} se defiende al ataque de {enemigo.Nombre}");
                     break;
                     case "3":
                     rendirse = 1;
@@ -94,18 +98,23 @@ namespace Combate
                 {
                     combateEnCurso = false;
                     ganador = 1;
+                    Thread.Sleep(5000);
+                    Console.Clear();
                     Console.WriteLine($"{enemigo.Nombre} ha sido derrotado.");
                     continue;
                 }
                 Console.WriteLine($"\nTurno de {enemigo.Nombre}");
                 jugador.Salud -= CalcularDanio(enemigo, jugador,defender);
-                Console.WriteLine($"\n{enemigo.Nombre} ataca a {jugador.Nombre}, salud de {jugador.Nombre}: {jugador.Salud}");
+                Console.WriteLine($"{enemigo.Nombre} ataca a {jugador.Nombre}, salud de {jugador.Nombre}: {jugador.Salud}");
 
                 if (jugador.Salud <= 0)
                 {
                     combateEnCurso = false;
                     ganador = 2;
+                    Thread.Sleep(5000);
+                    Console.Clear();
                     Console.WriteLine($"{jugador.Nombre} ha sido derrotado.");
+                    Texto.Texto.Perdiste();
                     continue;
                 }
             }

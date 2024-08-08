@@ -38,21 +38,21 @@ namespace Personajes
          public void MostrarInformacion()
         {
             string estadisticas = $@"
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║                      Estadísticas del Personaje                ║
-║                                                                ║
-╠════════════════════════════════════════════════════════════════╣
-║ Nombre     : {Nombre,-50}║
-║ Apodo      : {Apodo,-50}║
-║ Salud      : {Salud,-50}║
-║ Destreza   : {Destreza,-50}║
-║ Fuerza     : {Fuerza,-50}║
-║ Nivel      : {Nivel,-50}║
-║ Armadura   : {Armadura,-50}║
-║ Velocidad  : {Velocidad,-50}║
-╚════════════════════════════════════════════════════════════════╝
-";
+            ╔════════════════════════════════════════════════════════════════╗
+            ║                                                                ║
+            ║                      Estadísticas del Personaje                ║
+            ║                                                                ║
+            ╠════════════════════════════════════════════════════════════════╣
+            ║ Nombre     : {Nombre,-50}║
+            ║ Apodo      : {Apodo,-50}║
+            ║ Salud      : {Salud,-50}║
+            ║ Destreza   : {Destreza,-50}║
+            ║ Fuerza     : {Fuerza,-50}║
+            ║ Nivel      : {Nivel,-50}║
+            ║ Armadura   : {Armadura,-50}║
+            ║ Velocidad  : {Velocidad,-50}║
+            ╚════════════════════════════════════════════════════════════════╝
+            ";
             Console.WriteLine(estadisticas);
         }
     }

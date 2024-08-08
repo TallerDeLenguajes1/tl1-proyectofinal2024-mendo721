@@ -1,0 +1,54 @@
+[
+  {
+    "Tipo": "Sargento ",
+    "Nombre": "Donnie Donowitz",
+    "Apodo": "Oso Jud\u00EDo",
+    "FechaDeNacimiento": "1950-05-10T00:00:00",
+    "Edad": 74,
+    "Velocidad": 5,
+    "Destreza": 5,
+    "Fuerza": 3,
+    "Nivel": 7,
+    "Armadura": 6,
+    "Salud": 100
+  },
+  {
+    "Tipo": "Teniente",
+    "Nombre": "Aldo Raine",
+    "Apodo": "El Apache",
+    "FechaDeNacimiento": "2000-01-01T00:00:00",
+    "Edad": 24,
+    "Velocidad": 7,
+    "Destreza": 4,
+    "Fuerza": 10,
+    "Nivel": 5,
+    "Armadura": 8,
+    "Salud": 100
+  },
+  {
+    "Tipo": "Teniente",
+    "Nombre": "Aldo Raine",
+    "Apodo": "El Apache",
+    "FechaDeNacimiento": "2000-01-01T00:00:00",
+    "Edad": 24,
+    "Velocidad": 7,
+    "Destreza": 4,
+    "Fuerza": 10,
+    "Nivel": 5,
+    "Armadura": 8,
+    "Salud": 100
+  },
+  {
+    "Tipo": "Teniente",
+    "Nombre": "Aldo Raine",
+    "Apodo": "El Apache",
+    "FechaDeNacimiento": "2000-01-01T00:00:00",
+    "Edad": 24,
+    "Velocidad": 7,
+    "Destreza": 4,
+    "Fuerza": 10,
+    "Nivel": 5,
+    "Armadura": 8,
+    "Salud": 100
+  }
+]
