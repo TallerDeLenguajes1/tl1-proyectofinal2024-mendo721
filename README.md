@@ -1,1 +1,2 @@
-# tl1-proyectofinal2024-mendo721
+# Bastardos sin Gloria
+pdasdaEste juego está basado en la icónica película "Bastardos Sin Gloria" de Quentin Tarantino. Te lleva directamente a la escena final de la película, donde los Bastardos se infiltran en un cine en el corazón de París, con la misión de acabar con los altos mandos del Tercer Reich. Asume el papel de un Bastardo, y atraviesa peligros y desafíos mientras te adentras en el cine para cumplir con la misión más importante de la resistencia. ¿Tendrás lo necesario para cambiar el curso de la historia?
