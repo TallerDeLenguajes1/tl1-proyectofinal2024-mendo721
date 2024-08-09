@@ -9,7 +9,7 @@ using Historial;
 using Combate;
 using Texto;
 using System.Threading.Tasks;
-using TuEspacioDeNombres;
+using Api;
 
 namespace JuegoRPG
 {
@@ -30,11 +30,11 @@ namespace JuegoRPG
             {
                 Console.WriteLine("\nOpcion: ");
                 int.TryParse(Console.ReadLine(), out opcion);
-                if (opcion < 1 && opcion > 4)
+                if (opcion < 1 || opcion > 4)
                 {
                     Console.WriteLine("Opcion no valida");
                 }
-            } while (opcion < 1 || opcion > 3);
+            } while (opcion < 1 || opcion > 4);
 
             switch (opcion)
             {
@@ -70,7 +70,7 @@ namespace JuegoRPG
                     Console.WriteLine("Personajes disponibles:");
                     foreach (var personaje in personajes)
                     {
-                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
+                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo}");
                     }
                     Console.WriteLine("-----------------------------------------------------------------------------");
                     Combate.Combate.IniciarCombate(jugador, personajes);
@@ -134,7 +134,7 @@ namespace JuegoRPG
                     Console.WriteLine("Personajes disponibles:");
                     foreach (var personaje in personajesCargados)
                     {
-                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
+                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo}");
                     }
                     Console.WriteLine("-----------------------------------------------------------------------------");
 
@@ -142,6 +142,24 @@ namespace JuegoRPG
 
                     Combate.Combate.IniciarCombate(jugador1, personajesCargados);
                     break;
+
+                case 3:
+                    string historial = "Historial/ganadores.json";
+                    List<Jugador.Jugador> Ganadores;
+                    if (Historial.Ganador.Existe(historial))
+                    {
+                        Ganadores = Historial.Ganador.LeerGanadores(historial);
+                        Console.WriteLine("-----------------------------------------------------------------------------");
+                        Console.WriteLine("Lista de Ganadores:");
+                        foreach (var ganadores in Ganadores)
+                        {
+                            Console.WriteLine($"{ganadores.Nombre} ({ganadores.Tipo}) - {ganadores.Apodo}");
+                        }
+                        Console.WriteLine("-----------------------------------------------------------------------------");
+                    }
+
+
+                break;
             }
         }
 

@@ -66,27 +66,37 @@ namespace Combate
                 jugador.MostrarInformacion();
                 enemigo.MostrarInformacion();
                 Console.WriteLine($"\nTurno de {jugador.Nombre}");
-                string? accion;
+                
                 int defender = 0;
                 int rendirse = 0;
+                
                 Console.WriteLine("1- Atacar");
                 Console.WriteLine("2- Defender");
                 Console.WriteLine("3- Rendirse");
-                Console.WriteLine("\nAccion: ");
-                accion = Console.ReadLine();
+                int accion;
+                do
+                {
+                    Console.WriteLine("\nAccion: ");
+                    int.TryParse(Console.ReadLine(), out accion);
+                    if (accion < 1 || accion > 3)
+                    {
+                        Console.WriteLine("Opcion no valida");
+                    }
+                } while (accion < 1 || accion > 3);
+                
                 Thread.Sleep(1000);
                 Console.Clear();
                 switch (accion)
                 {
-                    case "1":
+                    case 1:
                     enemigo.Salud -= CalcularDanio(jugador, enemigo,defender);
-                    Console.WriteLine($"{jugador.Nombre} ataca a {enemigo.Nombre}, salud de {enemigo.Nombre}: {enemigo.Salud}");
+                    Console.WriteLine($"{jugador.Nombre} ataca a {enemigo.Nombre}");
                     break;
-                    case "2":
+                    case 2:
                     defender = 10;
                     Console.WriteLine($"{jugador.Nombre} se defiende al ataque de {enemigo.Nombre}");
                     break;
-                    case "3":
+                    case 3:
                     rendirse = 1;
                     break;
                 }
@@ -109,7 +119,7 @@ namespace Combate
                 }
                 Console.WriteLine($"\nTurno de {enemigo.Nombre}");
                 jugador.Salud -= CalcularDanio(enemigo, jugador,defender);
-                Console.WriteLine($"{enemigo.Nombre} ataca a {jugador.Nombre}, salud de {jugador.Nombre}: {jugador.Salud}");
+                Console.WriteLine($"{enemigo.Nombre} ataca a {jugador.Nombre}");
 
                 if (jugador.Salud <= 0)
                 {
