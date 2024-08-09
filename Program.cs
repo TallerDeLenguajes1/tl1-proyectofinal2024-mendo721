@@ -8,22 +8,29 @@ using PersonajesJson;
 using Historial;
 using Combate;
 using Texto;
+using System.Threading.Tasks;
+using TuEspacioDeNombres;
 
 namespace JuegoRPG
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            //Texto.Texto.Presentacion();
-            //Texto.Texto.Menu();
-            Console.WriteLine("\nOpcion: ");
+            Texto.Texto.Presentacion();
+            Texto.Texto.Menu();
+            await Api();
+            string ClimasDisponibles = "Funciones/climas.json";
+            List<InformacionClimatica> climasCargados;
+            climasCargados = ServicioClima.LeerClima(ClimasDisponibles);
+            InformacionClimatica clima = climasCargados[0];
+            
             int opcion;
             do
             {
                 Console.WriteLine("\nOpcion: ");
                 int.TryParse(Console.ReadLine(), out opcion);
-                if (opcion < 1 && opcion > 3)
+                if (opcion < 1 && opcion > 4)
                 {
                     Console.WriteLine("Opcion no valida");
                 }
@@ -31,46 +38,140 @@ namespace JuegoRPG
 
             switch (opcion)
             {
-                
-                case 1: 
-                
 
-                break;
+                case 1:
+                    Texto.Texto.Mision();
+                    Console.WriteLine($"\nPreparate soldado la zona esta fuertemente vigilada y la temperatura ronda los {clima.Temperatura}");
+                    string archivoPersonajes = "Personajes/personajes.json";
+
+                    List<Personaje> personajes;
+                    Jugador.Jugador jugador = FabricaDePersonajes.FabricaDePersonajes.SeleccionarPersonaje();
+                    personajes = new List<Personaje>();
+                    if (clima.Temperatura>20.0)
+                    {
+                        Console.WriteLine("Soldado lamentablemente las temperaturas son muy altas (pierdes un puntos de velocidad)");
+                        jugador.Velocidad--;
+                    }
+                    if (clima.Temperatura<5.0)
+                    {
+                        Console.WriteLine("Soldado lamentablemente las temperaturas son muy bajas (pierdes un puntos de armadura)");
+                        jugador.Armadura--;
+                    }
+
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        personajes.Add(FabricaDePersonajes.FabricaDePersonajes.CrearEnemigoAleatorio());
+                    }
+
+                    PersonajesJson.PersonajesJson.GuardarPersonajes(personajes, archivoPersonajes);
+
+                    Console.WriteLine("-----------------------------------------------------------------------------");
+                    Console.WriteLine("Personajes disponibles:");
+                    foreach (var personaje in personajes)
+                    {
+                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
+                    }
+                    Console.WriteLine("-----------------------------------------------------------------------------");
+                    Combate.Combate.IniciarCombate(jugador, personajes);
+
+                    break;
+
+                case 2:
+                    string archivoPersonajesCargados = "Personajes/personajes.json";
+                    List<Personaje> personajesCargados;
+                    Jugador.Jugador jugador1 = FabricaDePersonajes.FabricaDePersonajes.SeleccionarPersonaje();
+                    if (clima.Temperatura>20.0)
+                    {
+                        Console.WriteLine("Soldado lamentablemente las temperaturas son muy altas (pierdes un puntos de velocidad)");
+                        jugador1.Velocidad--;
+                    }
+                    if (clima.Temperatura<5.0)
+                    {
+                        Console.WriteLine("Soldado lamentablemente las temperaturas son muy bajas (pierdes un puntos de armadura)");
+                        jugador1.Armadura--;
+                    }
+
+                    if (PersonajesJson.PersonajesJson.Existe(archivoPersonajesCargados))
+                    {
+                        personajesCargados = PersonajesJson.PersonajesJson.LeerPersonajes(archivoPersonajesCargados);
+                        if (personajesCargados.Count >= 1)
+                        {
+                            Console.WriteLine("\nPartida cargada");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nNo Existe partida cargada");
+
+                            personajesCargados = new List<Personaje>();
+
+
+
+                            for (int i = 0; i < 10; i++)
+                            {
+                                personajesCargados.Add(FabricaDePersonajes.FabricaDePersonajes.CrearEnemigoAleatorio());
+                            }
+
+                            PersonajesJson.PersonajesJson.GuardarPersonajes(personajesCargados, archivoPersonajesCargados);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nNo Existe partida cargada");
+
+                        personajesCargados = new List<Personaje>();
+
+
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            personajesCargados.Add(FabricaDePersonajes.FabricaDePersonajes.CrearEnemigoAleatorio());
+                        }
+
+                        PersonajesJson.PersonajesJson.GuardarPersonajes(personajesCargados, archivoPersonajesCargados);
+                    }
+                    Console.WriteLine("-----------------------------------------------------------------------------");
+                    Console.WriteLine("Personajes disponibles:");
+                    foreach (var personaje in personajesCargados)
+                    {
+                        Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
+                    }
+                    Console.WriteLine("-----------------------------------------------------------------------------");
+
+
+
+                    Combate.Combate.IniciarCombate(jugador1, personajesCargados);
+                    break;
             }
-            string archivoPersonajes = "Personajes/personajes.json";
+        }
 
-            List<Personaje> personajes;
-            Jugador.Jugador jugador = FabricaDePersonajes.FabricaDePersonajes.SeleccionarPersonaje();
+        public static async Task Api()
+        {
+            string claveApi = "7793c47c845c2d65bf19a1094283eef4";
 
-            if (PersonajesJson.PersonajesJson.Existe(archivoPersonajes))
+            ServicioClima servicioClima = new ServicioClima(claveApi);
+            string ClimasDisponibles = "Funciones/climas.json";
+            List<InformacionClimatica> climasCargados;
+
+            try
             {
-                personajes = PersonajesJson.PersonajesJson.LeerPersonajes(archivoPersonajes);
-            }
-            else
-            {
-                personajes = new List<Personaje>();
+                InformacionClimatica clima = await servicioClima.ObtenerClimaAsync("Paris", "FR");
+                ServicioClima.GuardarClima(clima, ClimasDisponibles);
+                Console.WriteLine($"Ciudad: {clima.Ciudad}");
+                Console.WriteLine($"Temperatura: {clima.Temperatura}°C");
+                Console.WriteLine($"Descripción: {clima.Descripcion}");
                 
-                
-
-                for (int i = 0; i < 10; i++)
-                {
-                    personajes.Add(FabricaDePersonajes.FabricaDePersonajes.CrearEnemigoAleatorio());
-                }
-
-                PersonajesJson.PersonajesJson.GuardarPersonajes(personajes, archivoPersonajes);
             }
-            
-            Console.WriteLine("-----------------------------------------------------------------------------");
-            Console.WriteLine("Personajes disponibles:");
-            foreach (var personaje in personajes)
+            catch (Exception ex)
             {
-                Console.WriteLine($"{personaje.Nombre} ({personaje.Tipo}) - {personaje.Apodo} - Edad: {personaje.Edad} años");
+                climasCargados = ServicioClima.LeerClima(ClimasDisponibles);
+                InformacionClimatica clima = climasCargados[0];
+                Console.WriteLine($"Ciudad: {clima.Ciudad}");
+                Console.WriteLine($"Temperatura: {clima.Temperatura}°C");
+                Console.WriteLine($"Descripción: {clima.Descripcion}");
+                Console.WriteLine(ex.Message);
             }
-            Console.WriteLine("-----------------------------------------------------------------------------");
 
-            
-
-            Combate.Combate.IniciarCombate(jugador, personajes);
         }
     }
 }

@@ -5,6 +5,7 @@ using Enemigo;
 using FabricaDePersonajes;
 using System.Threading;
 using Historial;
+using PersonajesJson;
 using Personajes;
 
 namespace Combate
@@ -13,6 +14,9 @@ namespace Combate
     {
         public static void IniciarCombate(Jugador.Jugador jugador, List<Personaje> personajes)
         {
+            string archivoGanadores = "Historial/ganadores.json";
+            string archivoPersonajes = "Personajes/personajes.json";
+
             if (personajes.Count < 1)
             {
                 Console.WriteLine("\nNo hay suficientes personajes para empezar un combate");
@@ -45,10 +49,10 @@ namespace Combate
                     jugador.MejorarEstadisticas();
                 }
                 Console.Clear();
+                PersonajesJson.PersonajesJson.GuardarPersonajes(personajes, archivoPersonajes);
             }
 
             Texto.Texto.Ganaste();
-            string archivoGanadores = "Historial/ganadores.json";
             Historial.Ganador.GuardarGanador(jugador, archivoGanadores);
         }
 

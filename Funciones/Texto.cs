@@ -61,17 +61,17 @@ namespace Texto
         public static void Menu()
         {
             Console.Clear();
-            string menu = @"
+            Console.WriteLine($@"
             ╔════════════════════════════════════════════════════════════════╗
             ║                                                                ║
             ║                      Bastardos Sin Gloria                      ║
             ║                                                                ║
             ╠════════════════════════════════════════════════════════════════╣
             ║                      1. Jugar                                  ║
-            ║                      2. Historial de ganadores                 ║
-            ║                      3. Salir                                  ║
-            ╚════════════════════════════════════════════════════════════════╝";
-            Escribir(1, menu);
+            ║                      2. Cargar partida                         ║
+            ║                      3. Historial de ganadores                 ║
+            ║                      4. Salir                                  ║
+            ╚════════════════════════════════════════════════════════════════╝");
         }
 
         public static void MostrarMensajeDerrota()
@@ -144,6 +144,38 @@ namespace Texto
       ░                                                 ░               
 ");
             Thread.Sleep(6000);
+        }
+        public static void Mision(){
+            Console.WriteLine(@"
+            ╔══════════════════════════════════════════════════════════════════════════╗
+            ║                                                                          ║
+            ║                       Misión Final: Operación Cinéma Infernal            ║
+            ║                                                                          ║
+            ╠══════════════════════════════════════════════════════════════════════════╣
+            ║ Tus órdenes son claras. Serán dejados a 10 kilómetros a las afueras de   ║
+            ║ París. El objetivo es simple, pero mortal. Su misión es infiltrarse en   ║
+            ║ un cine del corazón de París, donde los altos mandos del Tercer Reich    ║
+            ║ estarán reunidos para una función especial. Este será su único y mejor   ║
+            ║ chance para eliminar a la cúpula nazi de una vez por todas.              ║
+            ║                                                                          ║
+            ║ El camino no será fácil. El área está fuertemente vigilada, y cualquier  ║
+            ║ movimiento en falso podría significar el fracaso de la misión. Deben     ║
+            ║ ser silenciosos, precisos y letales. Infiltrarse en el cine, mezclarte   ║
+            ║ entre la multitud sin ser detectado, y cuando llegue el momento,         ║
+            ║ desatar el infierno.                                                     ║
+            ║                                                                          ║
+            ║ Recuerden, este es un golpe quirúrgico; su éxito podría cambiar el curso ║
+            ║ de la guerra. Buena suerte, Bastardos. El destino de miles descansa en   ║
+            ║ sus manos.                                                               ║
+            ║                                                                          ║
+            ║ Nota: La información sobre el clima se les informará a la brevedad.      ║
+            ╠══════════════════════════════════════════════════════════════════════════╣
+            ║                        Presiona Enter para continuar...                  ║
+            ╚══════════════════════════════════════════════════════════════════════════╝
+            ");
+            Thread.Sleep(6000);
+            Console.ReadKey();
+            Console.Clear();
         }
 
     }
