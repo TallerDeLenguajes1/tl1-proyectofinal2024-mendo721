@@ -24,5 +24,18 @@
     "Nivel": 8,
     "Armadura": 10,
     "Salud": 100
+  },
+  {
+    "Tipo": "Teniente",
+    "Nombre": "Aldo Raine",
+    "Apodo": "El Apache",
+    "FechaDeNacimiento": "2000-01-01T00:00:00",
+    "Edad": 24,
+    "Velocidad": 6,
+    "Destreza": 4,
+    "Fuerza": 19,
+    "Nivel": 5,
+    "Armadura": 8,
+    "Salud": 100
   }
 ]

@@ -67,7 +67,7 @@ namespace Texto
             ║                      Bastardos Sin Gloria                      ║
             ║                                                                ║
             ╠════════════════════════════════════════════════════════════════╣
-            ║                      1. Jugar                                  ║
+            ║                      1. Nueva partida                          ║
             ║                      2. Cargar partida                         ║
             ║                      3. Historial de ganadores                 ║
             ║                      4. Salir                                  ║

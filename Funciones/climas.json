@@ -1,32 +1,27 @@
 [
   {
     "Descripcion": "clear sky",
-    "Temperatura": 22.18,
+    "Temperatura": 33.18,
     "Ciudad": "Paris"
   },
   {
     "Descripcion": "clear sky",
-    "Temperatura": 22.68,
+    "Temperatura": 18.17,
     "Ciudad": "Paris"
   },
   {
     "Descripcion": "clear sky",
-    "Temperatura": 22.08,
+    "Temperatura": 17.98,
     "Ciudad": "Paris"
   },
   {
-    "Descripcion": "overcast clouds",
-    "Temperatura": 22.05,
+    "Descripcion": "clear sky",
+    "Temperatura": 17.98,
     "Ciudad": "Paris"
   },
   {
-    "Descripcion": "overcast clouds",
-    "Temperatura": 22.05,
-    "Ciudad": "Paris"
-  },
-  {
-    "Descripcion": "overcast clouds",
-    "Temperatura": 22.05,
+    "Descripcion": "clear sky",
+    "Temperatura": 17.98,
     "Ciudad": "Paris"
   }
 ]

@@ -23,7 +23,7 @@ namespace JuegoRPG
             string ClimasDisponibles = "Funciones/climas.json";
             List<InformacionClimatica> climasCargados;
             climasCargados = ServicioClima.LeerClima(ClimasDisponibles);
-            InformacionClimatica clima = climasCargados[0];
+            InformacionClimatica clima = climasCargados[climasCargados.Count-1];
             
             int opcion;
             do
@@ -169,7 +169,6 @@ namespace JuegoRPG
 
             ServicioClima servicioClima = new ServicioClima(claveApi);
             string ClimasDisponibles = "Funciones/climas.json";
-            List<InformacionClimatica> climasCargados;
 
             try
             {
@@ -182,11 +181,6 @@ namespace JuegoRPG
             }
             catch (Exception ex)
             {
-                climasCargados = ServicioClima.LeerClima(ClimasDisponibles);
-                InformacionClimatica clima = climasCargados[0];
-                Console.WriteLine($"Ciudad: {clima.Ciudad}");
-                Console.WriteLine($"Temperatura: {clima.Temperatura}°C");
-                Console.WriteLine($"Descripción: {clima.Descripcion}");
                 Console.WriteLine(ex.Message);
             }
 
